@@ -1,28 +1,27 @@
 import { useState } from "react";
 import { Checkbox } from "./checkbox";
-import { Button } from "./button";
-import { Trash } from "lucide-react";
 
 interface TodoItemProps {
 	task: string;
 	key: number | string;
 	completed: boolean;
+	onToggle: () => void;
 }
 
-export default function TodoItem(props: TodoItemProps) {
-	const [completed, setCompleted] = useState(props.completed);
-	function handleChecked() {
-		setCompleted(!completed);
-	}
+export default function TodoItem({ task, completed, onToggle }: TodoItemProps) {
 	return (
 		<>
 			<li>
 				<div className="flex items-center justify-between">
-					<Checkbox className="mr-3" onClick={handleChecked} />
+					<Checkbox
+						className="mr-3"
+						checked={completed}
+						onCheckedChange={onToggle}
+					/>
 					<span
 						className={`strike-through ${completed ? "completed text-muted-foreground" : ""}`}
 					>
-						{props.task}
+						{task}
 					</span>
 				</div>
 			</li>
