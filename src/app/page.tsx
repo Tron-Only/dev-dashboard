@@ -1,6 +1,7 @@
 import TodoList from "@/components/TodoList";
 import { ModeToggle } from "@/components/ModeToggle";
 import PomodoroTimer from "@/components/Pomodoro";
+import SnippetsBox from "@/components/Snippetsbox";
 
 export default function Home() {
 	return (
@@ -8,6 +9,7 @@ export default function Home() {
 			<ModeToggle />
 			<TodoList />
 			<PomodoroTimer />
+			<SnippetsBox />
 		</div>
 	);
 }
