@@ -14,7 +14,7 @@ export default function TodoItem({ task, completed, onToggle }: TodoItemProps) {
 			<li>
 				<div className="flex items-center justify-between">
 					<Checkbox
-						className="mr-3"
+						className="mr-3 cursor-pointer"
 						checked={completed}
 						onCheckedChange={onToggle}
 					/>

@@ -6,6 +6,7 @@ import TodoItem from "./ui/TodoItem";
 import { Button } from "./ui/button";
 import { Trash } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface Task {
 	id: string;
@@ -59,7 +60,7 @@ export default function TodoList() {
 
 	return (
 		<>
-			<Card className="w-120 px-20">
+			<Card className="w-120 h-[500px] p-10">
 				<h1 className="text-center">What tasks shall we do today?</h1>
 				<input
 					type="text"
@@ -71,30 +72,31 @@ export default function TodoList() {
 					onChange={handleChange}
 					onKeyDown={handleKeyDown}
 				/>
-
-				<ul>
-					{tasks.map((task) => (
-						<div
-							key={task.id}
-							className="flex justify-between p-3 border m-3 rounded"
-						>
-							<TodoItem
+				<ScrollArea className="h-[340px] w-full rounded-md border">
+					<ul>
+						{tasks.map((task) => (
+							<div
 								key={task.id}
-								task={task.name}
-								completed={task.completed}
-								onToggle={() => handleToggle(task.id)}
-							/>
-							<Button
-								key={task.buttonKey}
-								variant="destructive"
-								className="cursor-pointer h-7 w-7"
-								onClick={() => handleDelete(task.id)}
+								className="flex justify-between p-3 border m-3 rounded"
 							>
-								<Trash />
-							</Button>
-						</div>
-					))}
-				</ul>
+								<TodoItem
+									key={task.id}
+									task={task.name}
+									completed={task.completed}
+									onToggle={() => handleToggle(task.id)}
+								/>
+								<Button
+									key={task.buttonKey}
+									variant="destructive"
+									className="cursor-pointer h-7 w-7"
+									onClick={() => handleDelete(task.id)}
+								>
+									<Trash />
+								</Button>
+							</div>
+						))}
+					</ul>
+				</ScrollArea>
 			</Card>
 		</>
 	);

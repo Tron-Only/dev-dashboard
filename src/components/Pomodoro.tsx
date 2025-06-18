@@ -152,7 +152,7 @@ export default function PomodoroTimer() {
 	};
 
 	return (
-		<Card className="w-120 p-10">
+		<Card className="w-120 h-[500px] p-10">
 			<CardHeader>
 				<CardTitle className="text-center">
 					{mode} Timer ({preset})

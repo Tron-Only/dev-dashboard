@@ -5,6 +5,7 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Tag, X } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface Snippet {
 	id: string;
@@ -67,7 +68,7 @@ export default function SnippetsBox() {
 	};
 
 	return (
-		<Card className="w-full p-6">
+		<Card className="w-[480] p-6">
 			<h2 className="text-xl font-semibold mb-4">Code Snippets</h2>
 
 			<textarea
@@ -96,7 +97,7 @@ export default function SnippetsBox() {
 				{currentTags.map((tag) => (
 					<span
 						key={tag}
-						className="flex items-center bg-gray-100 px-2 py-1 rounded text-sm "
+						className="flex items-center bg-muted px-2 py-1 rounded text-sm "
 					>
 						<Tag className="w-4 h-4 mr-1" />
 						{tag}
@@ -122,10 +123,11 @@ export default function SnippetsBox() {
 								onClick={() => handleDeleteSnippet(snippet.id)}
 							/>
 						</div>
-
-						<pre className="bg-gray-800 text-gray-100 p-3 rounded overflow-x-auto">
-							{snippet.code}
-						</pre>
+						<ScrollArea className="h-[400px] w-[350px] rounded-md border p-4">
+							<pre className="bg-gray-800 text-gray-100 p-3 rounded overflow-x-auto whitespace-pre-wrap break-words">
+								{snippet.code}
+							</pre>
+						</ScrollArea>
 
 						<div>
 							{snippet.tags.map((tag) => (
